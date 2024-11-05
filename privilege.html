@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<script>
+  (function (g, e, n, es, ys) {
+    g["_genesysJs"] = e;
+    g[e] =
+      g[e] ||
+      function () {
+        (g[e].q = g[e].q || []).push(arguments);
+      };
+    g[e].t = 1 * new Date();
+    g[e].c = es;
+    ys = document.createElement("script");
+    ys.async = 1;
+    ys.src = n;
+    ys.charset = "utf-8";
+
+    CXData = {
+      department: "MOTOR",
+      Product: "Car",
+      Device: "mobile",
+      Brand: "Privilege",
+      Language: "English",
+      MediaId: "PRIV_Personal",
+    };
+
+    document.head.appendChild(ys);
+    ys.onload = function () {
+      window.Genesys("subscribe", "Messenger.ready", function () {
+        window.Genesys("subscribe", "MessagingService.ready", function () {
+          CXAttributes(CXData);
+        });
+        window.Genesys(
+          "subscribe",
+          "MessagingService.conversationDisconnected",
+          function () {
+            CXAttributes(CXData);
+          }
+        );
+        window.Genesys(
+          "subscribe",
+          "MessagingService.conversationCleared",
+          function () {
+            CXAttributes(CXData);
+          }
+        );
+      });
+    };
+  })(
+    window,
+    "Genesys",
+    "https://apps.mypurecloud.ie/genesys-bootstrap/genesys.min.js",
+    {
+      environment: "prod-euw2",
+      deploymentId: "9bd4e88d-e05e-40a5-8903-61c8da4afcf2",
+    }
+  );
+  function CXAttributes(o) {
+    if (!(typeof o === "object" && !Array.isArray(o) && o === Object(o)))
+      return;
+    console.log("Setting attributes: ", o);
+    window.Genesys("command", "Database.set", {
+      messaging: { customAttributes: o },
+    });
+  }
+</script>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privilege Insurance - Demo Homepage</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      /* Header and Navigation */
+      header {
+        background-color: #c8102e;
+        padding: 20px;
+        color: white;
+        text-align: center;
+      }
+      nav {
+        background-color: #333;
+        padding: 10px 0;
+      }
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+      nav ul li {
+        margin: 0 15px;
+      }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+      }
+      nav ul li a:hover {
+        color: #c8102e;
+      }
+
+      /* Hero Section */
+      .hero {
+       /* background: url("https://via.placeholder.com/1600x600") no-repeat center*/
+          center/cover;
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+      }
+      .hero h1 {
+        font-size: 48px;
+        margin: 0;
+      }
+      .hero p {
+        font-size: 24px;
+        margin-top: 10px;
+      }
+      .hero button {
+        background-color: #c8102e;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 18px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      .hero button:hover {
+        background-color: #a50e24;
+      }
+
+      /* Main Content */
+      .content {
+        display: flex;
+        justify-content: space-around;
+        margin: 40px 20px;
+      }
+      .content .box {
+        background-color: white;
+        padding: 20px;
+        width: 30%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      .content .box h3 {
+        color: #c8102e;
+      }
+      .content .box p {
+        color: #333;
+      }
+      .content .box button {
+        background-color: #c8102e;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+      .content .box button:hover {
+        background-color: #a50e24;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <h1>Privilege Insurance</h1>
+      <p>Your trusted insurance provider</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Car Insurance</a></li>
+        <li><a href="#">Home Insurance</a></li>
+        <li><a href="#">Travel Insurance</a></li>
+        <li><a href="#">Claims</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <h1>Get the insurance cover you need</h1>
+      <p>Comprehensive coverage at an affordable price</p>
+      <button>Get a Quote</button>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="content">
+      <div class="box">
+        <h3>Car Insurance</h3>
+        <p>Protect your car with our comprehensive insurance plans.</p>
+        <button>Learn More</button>
+      </div>
+      <div class="box">
+        <h3>Home Insurance</h3>
+        <p>Secure your home and belongings with our flexible policies.</p>
+        <button>Learn More</button>
+      </div>
+      <div class="box">
+        <h3>Travel Insurance</h3>
+        <p>Travel with peace of mind knowing you're covered.</p>
+        <button>Learn More</button>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>&copy; 2024 Privilege Insurance - All rights reserved.</p>
+    </footer>
+  </body>
+</html>
