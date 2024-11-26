@@ -15,15 +15,6 @@
     ys.src = n;
     ys.charset = "utf-8";
 
-    CXData = {
-      Product: "Car",
-      Device: "Desktop",
-      Brand: "PR",
-      WebsiteURL: "https://www.privilege.com/car-insurance/claims",
-      Env: "SIT",
-      MockUp: "OFF",
-    };
-
     document.head.appendChild(ys);
     ys.onload = function () {
       window.Genesys("subscribe", "Messenger.ready", function () {
